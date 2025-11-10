@@ -27,5 +27,11 @@ WORKDIR /app
 # COPY --from=builder /app/dist/*.whl /app/
 # RUN pip install /app/*.whl
 
+# Copy app source from builder
+COPY --from=builder /app /app
+
+# Install the package so the module mcp_server_reddit is available
+RUN pip install --no-cache-dir 
+
 # Define default command
 ENTRYPOINT ["python", "-m", "mcp_server_reddit"]
