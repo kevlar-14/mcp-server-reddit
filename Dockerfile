@@ -12,8 +12,8 @@ RUN pip install hatchling
 COPY pyproject.toml README.md /app/
 COPY src /app/src
 
-# Install the mcp-server-reddit package so python -m mcp_server_reddit works
-RUN pip install .
+# Install this package (builds from pyproject.toml)
+RUN pip install --no-cache-dir .
 
 # Build the project wheel
 # RUN python -m build
@@ -30,8 +30,8 @@ WORKDIR /app
 # Copy app source from builder
 COPY --from=builder /app /app
 
-# Install the package so the module mcp_server_reddit is available
-RUN pip install --no-cache-dir 
+# Install the built package into the final image
+RUN pip install --no-cache-dir mcp-server-reddit
 
 # Define default command
 ENTRYPOINT ["python", "-m", "mcp_server_reddit"]
