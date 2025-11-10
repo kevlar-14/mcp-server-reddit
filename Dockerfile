@@ -21,8 +21,8 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Install the package
-COPY --from=builder /app/dist/*.whl /app/
-RUN pip install /app/*.whl
+# COPY --from=builder /app/dist/*.whl /app/
+# RUN pip install /app/*.whl
 
 # Define default command
 ENTRYPOINT ["python", "-m", "mcp_server_reddit"]
