@@ -12,6 +12,9 @@ RUN pip install hatchling
 COPY pyproject.toml README.md /app/
 COPY src /app/src
 
+# Install the mcp-server-reddit package so python -m mcp_server_reddit works
+RUN pip install .
+
 # Build the project wheel
 # RUN python -m build
 
