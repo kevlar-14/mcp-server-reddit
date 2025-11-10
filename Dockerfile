@@ -13,7 +13,7 @@ COPY pyproject.toml README.md /app/
 COPY src /app/src
 
 # Build the project wheel
-RUN python -m build
+# RUN python -m build
 
 # Use a separate environment for the final image
 FROM python:3.11-slim
